@@ -1,0 +1,82 @@
+[tool.poetry]
+name = "open-curtain-calc"
+version = "0.1.0"
+description = "开源幕墙计算系统 - 豪沃克平替软件"
+authors = ["Your Name <your@email.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+sqlalchemy = "^2.0.23"
+alembic = "^1.12.1"
+psycopg2-binary = "^2.9.9"
+redis = "^5.0.1"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+python-jose = "^3.3.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-multipart = "^0.0.6"
+celery = "^5.3.4"
+numpy = "^1.26.2"
+scipy = "^1.11.4"
+pandas = "^2.1.4"
+openpyxl = "^3.1.2"
+sympy = "^1.12"
+python-occ-core = "^7.7.2"
+ezdxf = "^1.1.3"
+python-rhino3dm = "^8.6.1"
+python-docx = "^1.1.0"
+reportlab = "^4.0.9"
+pillow = "^10.1.0"
+httpx = "^0.25.1"
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+mypy = "^1.7.1"
+pre-commit = "^3.5.0"
+
+[tool.poetry.scripts]
+app = "app.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+asyncio_mode = "auto"
