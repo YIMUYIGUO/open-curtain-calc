@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCurtainCalc - 智能幕墙计算系统预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2a5298;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+        
+        .feature-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #eaeaea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+        
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background: #e9ecef;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .code-comment {
+            color: #5c6370;
+        }
+        
+        .code-string {
+            color: #98c379;
+        }
+        
+        .code-keyword {
+            color: #c678dd;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🦞 OpenCurtainCalc</div>
+            <div class="tagline">开源、智能、高效的幕墙计算系统</div>
+            <div class="badges">
+                <div class="badge">开源免费</div>
+                <div class="badge">替代豪沃克</div>
+                <div class="badge">现代化架构</div>
+                <div class="badge">AI辅助设计</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🌟 项目介绍</h2>
+                <p>OpenCurtainCalc 是一个功能全面的开源幕墙计算系统，旨在替代商业软件如豪沃克幕墙计算软件。系统提供完整的幕墙设计、计算、分析和报告生成功能。</p>
+                
+                <div class="buttons">
+                    <a href="https://github.com/YIMUYIGUO/open-curtain-calc" class="btn btn-primary" target="_blank">
+                        <span>🚀 查看GitHub仓库</span>
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <span>🎮 查看演示</span>
+                    </a>
+                    <a href="#installation" class="btn btn-secondary">
+                        <span>⚡ 快速安装</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title" id="demo">🎮 核心特性</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏗️</div>
+                        <h3 class="feature-title">结构计算</h3>
+                        <p class="feature-desc">立柱、横梁、连接件等结构计算，支持多种材料类型和荷载组合。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💨</div>
+                        <h3 class="feature-title">荷载分析</h3>
+                        <p class="feature-desc">风荷载、地震荷载、温度荷载等复杂荷载分析，符合国标规范。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">材料统计</h3>
+                        <p class="feature-desc">自动材料用量计算和成本估算，支持Excel报告导出。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3 class="feature-title">节点设计</h3>
+                        <p class="feature-desc">连接节点设计和验算，可视化节点构造和受力分析。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3 class="feature-title">计算书生成</h3>
+                        <p class="feature-desc">自动生成符合国标的计算书，支持Word/PDF格式导出。</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3 class="feature-title">AI辅助设计</h3>
+                        <p class="feature-desc">智能优化建议和异常检测，提高设计效率和质量。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title" id="installation">⚡ 快速启动</h2>
+                <div class="code-block">
+                    <span class="code-comment"># 克隆项目</span><br>
+                    <span class="code-keyword">git</span> clone https://github.com/YIMUYIGUO/open-curtain-calc.git<br>
+                    <span class="code-keyword">cd</span> open-curtain-calc<br><br>
+                    
+                    <span class="code-comment"># 启动开发环境 (需要Docker)</span><br>
+                    <span class="code-keyword">./scripts/deploy.sh</span> dev up<br><br>
+                    
+                    <span class="code-comment"># 访问应用</span><br>
+                    <span class="code-keyword">前端界面:</span> http://localhost:3000<br>
+                    <span class="code-keyword">后端API:</span> http://localhost:8000<br>
+                    <span class="code-keyword">API文档:</span> http://localhost:8000/docs<br>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🛠️ 技术栈</h2>
+                <div class="tech-stack">
+                    <div class="tech-item">Python 3.11+</div>
+                    <div class="tech-item">FastAPI</div>
+                    <div class="tech-item">React 18+</div>
+                    <div class="tech-item">TypeScript</div>
+                    <div class="tech-item">PostgreSQL</div>
+                    <div class="tech-item">Redis</div>
+                    <div class="tech-item">Docker</div>
+                    <div class="tech-item">Three.js</div>
+                    <div class="tech-item">Material-UI</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📊 与豪沃克对比</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 12px; border: 1px solid #eaeaea;">功能</th>
+                                <th style="padding: 12px; border: 1px solid #eaeaea;">豪沃克</th>
+                                <th style="padding: 12px; border: 1px solid #eaeaea;">OpenCurtainCalc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">价格</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">商业软件（9800元起）</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea; color: #28a745; font-weight: bold;">开源免费</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">源代码</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">闭源</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea; color: #28a745; font-weight: bold;">完全开源</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">定制化</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">有限</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea; color: #28a745; font-weight: bold;">高度可定制</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">AI辅助</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea;">不支持</td>
+                                <td style="padding: 12px; border: 1px solid #eaeaea; color: #28a745; font-weight: bold;">支持</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 OpenCurtainCalc - 开源幕墙计算系统</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <a href="https://github.com/YIMUYIGUO/open-curtain-calc" style="color: #667eea; text-decoration: none;">GitHub</a> |
+                <a href="#issues" style="color: #667eea; text-decoration: none;">问题反馈</a> |
+                <a href="#docs" style="color: #667eea; text-decoration: none;">文档</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
