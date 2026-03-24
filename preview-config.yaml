@@ -1,0 +1,184 @@
+# preview-config.yaml - OpenCurtainCalc 演示配置
+
+# 项目信息
+project:
+  name: "OpenCurtainCalc 演示项目"
+  version: "0.1.0"
+  description: "开源幕墙计算系统预览演示"
+  repository: "https://github.com/YIMUYIGUO/open-curtain-calc"
+
+# 系统架构
+architecture:
+  backend:
+    framework: "FastAPI"
+    language: "Python 3.11+"
+    database: "PostgreSQL"
+    cache: "Redis"
+    queue: "Celery"
+    
+  frontend:
+    framework: "React 18+"
+    language: "TypeScript"
+    ui_library: "Material-UI"
+    3d_engine: "Three.js"
+    build_tool: "Vite"
+
+# 核心功能模块
+modules:
+  - name: "结构计算"
+    description: "立柱、横梁、连接件等结构计算"
+    features:
+      - "钢结构计算"
+      - "铝合金结构计算"
+      - "玻璃结构计算"
+      - "石材幕墙计算"
+    
+  - name: "荷载分析"
+    description: "各种荷载计算和分析"
+    features:
+      - "风荷载计算 (GB50009)"
+      - "地震荷载计算 (GB50011)"
+      - "温度荷载计算"
+      - "雪荷载计算"
+    
+  - name: "材料统计"
+    description: "材料用量和成本计算"
+    features:
+      - "型材用量统计"
+      - "板材用量统计"
+      - "连接件统计"
+      - "成本估算"
+    
+  - name: "节点设计"
+    description: "连接节点设计和验算"
+    features:
+      - "螺栓连接设计"
+      - "焊接连接设计"
+      - "埋件设计"
+      - "转接件设计"
+    
+  - name: "计算书生成"
+    description: "自动生成计算报告"
+    features:
+      - "Word格式计算书"
+      - "PDF格式计算书"
+      - "Excel材料表"
+      - "CAD图纸输出"
+
+# AI辅助功能
+ai_features:
+  - name: "智能优化"
+    description: "基于机器学习的设计优化"
+    
+  - name: "异常检测"
+    description: "自动检测设计中的问题"
+    
+  - name: "参数推荐"
+    description: "智能推荐设计参数"
+    
+  - name: "方案对比"
+    description: "多方案自动对比分析"
+
+# 部署配置
+deployment:
+  development:
+    docker_compose: "./docker/docker-compose.yml"
+    ports:
+      frontend: 3000
+      backend: 8000
+      database: 5432
+      redis: 6379
+    
+  production:
+    docker_compose: "./docker/docker-compose.prod.yml"
+    ports:
+      frontend: 80
+      backend: 8000
+      ssl: true
+
+# API端点示例
+api_examples:
+  auth:
+    login: "POST /api/auth/login"
+    register: "POST /api/auth/register"
+    logout: "POST /api/auth/logout"
+    
+  projects:
+    list: "GET /api/projects"
+    create: "POST /api/projects"
+    detail: "GET /api/projects/{id}"
+    update: "PUT /api/projects/{id}"
+    
+  calculations:
+    start: "POST /api/calculations"
+    status: "GET /api/calculations/{id}"
+    result: "GET /api/calculations/{id}/result"
+    
+  materials:
+    list: "GET /api/materials"
+    calculate: "POST /api/materials/calculate"
+    export: "GET /api/materials/export"
+
+# 技术优势
+advantages:
+  - "开源免费，无许可费用"
+  - "现代化架构，易于扩展"
+  - "AI辅助设计，提高效率"
+  - "云原生部署，支持集群"
+  - "完整API，易于集成"
+  - "活跃社区，持续更新"
+
+# 对比传统软件
+comparison:
+  haowoke:
+    price: "9800元起"
+    source: "闭源"
+    customization: "有限"
+    cloud: "不支持"
+    mobile: "不支持"
+    ai: "不支持"
+    
+  open_curtain_calc:
+    price: "免费开源"
+    source: "完全开源"
+    customization: "高度可定制"
+    cloud: "支持云部署"
+    mobile: "支持移动端"
+    ai: "AI辅助设计"
+
+# 路线图
+roadmap:
+  v0.1.0:
+    - "基础项目结构"
+    - "用户认证系统"
+    - "项目管理"
+    - "基础计算引擎"
+    
+  v0.2.0:
+    - "完整计算模块"
+    - "3D可视化"
+    - "CAD文件导入"
+    - "计算书生成"
+    
+  v0.3.0:
+    - "BIM集成"
+    - "参数化设计"
+    - "云协同功能"
+    - "移动端应用"
+    
+  v1.0.0:
+    - "AI辅助设计"
+    - "施工模拟"
+    - "企业级功能"
+    - "完整文档"
+
+# 贡献指南
+contribution:
+  - "Fork项目"
+  - "创建功能分支"
+  - "提交更改"
+  - "创建Pull Request"
+  - "遵循代码规范"
+
+# 许可证
+license: "MIT"
