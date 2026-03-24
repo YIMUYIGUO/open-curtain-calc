@@ -1,0 +1,122 @@
+# GitHub Pages配置文件
+# 用于启用GitHub Pages并配置预览页面
+
+# 启用GitHub Pages
+# 设置方法:
+# 1. 访问 https://github.com/YIMUYIGUO/open-curtain-calc/settings/pages
+# 2. 在"Source"部分选择"Deploy from a branch"
+# 3. 选择分支: "main"
+# 4. 选择文件夹: "/ (root)"
+# 5. 点击"Save"
+
+# GitHub Pages配置选项
+pages_config:
+  # 基本设置
+  branch: main
+  folder: /
+  theme: none  # 不使用Jekyll主题，使用自定义HTML
+  
+  # 自定义域名（可选）
+  # custom_domain: curtaincalc.example.com
+  
+  # 安全设置
+  enforce_https: true
+  
+  # 构建选项
+  build_type: manual  # 手动构建，因为我们使用静态HTML
+  
+  # 缓存设置
+  cache_control:
+    html: max-age=3600
+    css: max-age=86400
+    js: max-age=86400
+    images: max-age=2592000
+
+# 预览页面配置
+preview_config:
+  main_page: preview.html
+  title: "OpenCurtainCalc - 智能幕墙计算系统"
+  description: "开源、智能、高效的幕墙计算系统，替代商业软件如豪沃克"
+  keywords:
+    - "幕墙计算"
+    - "开源软件"
+    - "结构计算"
+    - "建筑软件"
+    - "BIM"
+    - "AI辅助设计"
+  
+  # 社交分享信息
+  open_graph:
+    type: website
+    url: https://yimuyiguo.github.io/open-curtain-calc/
+    image: https://yimuyiguo.github.io/open-curtain-calc/assets/preview-image.png
+    site_name: OpenCurtainCalc
+  
+  # 导航菜单
+  navigation:
+    - text: "首页"
+      url: "/preview.html"
+    - text: "GitHub仓库"
+      url: "https://github.com/YIMUYIGUO/open-curtain-calc"
+    - text: "文档"
+      url: "#docs"
+    - text: "演示"
+      url: "#demo"
+
+# 文件结构说明
+files:
+  preview.html: "主预览页面"
+  preview-demo.sh: "演示脚本"
+  preview-config.yaml: "配置说明"
+  README.md: "项目文档"
+  LICENSE: "许可证文件"
+  
+  # 目录结构
+  directories:
+    frontend/: "前端源码"
+    backend/: "后端源码"
+    docker/: "Docker配置"
+    scripts/: "部署脚本"
+
+# 快速启动指南
+quick_start:
+  1. "访问预览页面: https://yimuyiguo.github.io/open-curtain-calc/"
+  2. "查看GitHub仓库: https://github.com/YIMUYIGUO/open-curtain-calc"
+  3. "下载项目: git clone https://github.com/YIMUYIGUO/open-curtain-calc.git"
+  4. "启动开发环境: ./scripts/deploy.sh dev up"
+
+# 技术支持
+support:
+  issues: "https://github.com/YIMUYIGUO/open-curtain-calc/issues"
+  discussions: "https://github.com/YIMUYIGUO/open-curtain-calc/discussions"
+  wiki: "https://github.com/YIMUYIGUO/open-curtain-calc/wiki"
+  
+# 贡献指南
+contribution:
+  - "Fork项目"
+  - "创建功能分支"
+  - "提交更改"
+  - "创建Pull Request"
+  - "遵循代码规范"
+
+# 许可证信息
+license_info:
+  type: "MIT License"
+  file: "LICENSE"
+  summary: "允许商业使用、修改、分发和私人使用"
+  conditions: "必须包含许可证和版权声明"
+  limitations: "不提供担保"
+
+# 更新日志
+changelog:
+  "2024-03-24":
+    - "创建GitHub仓库"
+    - "上传核心文件"
+    - "添加预览页面"
+    - "配置GitHub Pages"
+  
+  next_steps:
+    - "启用GitHub Pages"
+    - "添加更多演示内容"
+    - "完善文档"
+    - "添加CI/CD流水线"
